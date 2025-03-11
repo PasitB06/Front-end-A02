@@ -4,6 +4,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+        function Check() 
+        {
+            let name = document.getElementById("iName");
+            if (name.value.length == 0) {
+                alert("กรุณากรอกชื่อ");
+                return;
+            }
+
+            let tel = document.getElementById("iTel");
+            if (tel.value.length == 0) {
+                alert("กรุณากรอกเบอร์โทรศัพท์");
+                return;
+            }
+
+            let travelers = document.getElementById("iTravelers");
+            if (travelers.value.length == 0) {
+                alert("กรุณากรอกเบอร์จำนวนผู้เดินทาง");
+                return;
+            }
+            else if (isNaN(travelers.value))
+            {
+                alert("กรุณากรอกตัวเลขเท่านั้น");
+                return;
+            }
+            else if (travelers.value < 1 || travelers.value > 15) {
+                alert("กรุณากรอกจำนวนผู้เดินทางระหว่าง 1 - 15 คน");
+                return;
+            }
+        }
+        function buyTicketSelf()
+        {
+            let buyTicketCheckbox = document.getElementById("iBuyAirplaneTicketself");
+
+            if (buyTicketCheckbox.checked) {
+            let confirmChoice = confirm("ต้องการซื้อบัตรโดยสารเครื่องบินเองใช่หรือไม่?");
+            
+            if (confirmChoice) {
+                alert("คุณเลือกซื้อบัตรโดยสารเครื่องบินเอง");
+            } else {
+                buyTicketCheckbox.checked = false;
+            }
+        }
+        }
+    </script>
 </head>
 <body>
     <div class="container02">
@@ -12,33 +58,30 @@
         <div class="booking">
             <form action="#">
                 <label for="name">Name</label>
-                <input type="text">
+                <input type="text" name="name" id="iName">
                 <br>
 
                 <label for="tel">Telephone</label>
-                <input type="tel">
+                <input type="tel" name="tel" id="iTel">
                 <br>
 
-                <label for="package">Tour Package</label>
-                <select id="package">
-                    <option value="small">Small Group (10-20)</option>
-                    <option value="large">Large Group (21-40)</option>
-                </select>
+                <label for="travelers">Number of Travelers</label>
+                <input type="travelers" name="travelers" id="iTravelers">
                 <br>
 
-                <label for="BuyAirplaneTicketself" class="checkbox-label">
-                    <input type="checkbox" name="BuyAirplaneTicketself" id="BuyAirplaneTicketself" > 
+                <label for="buyAirplaneTicketself" class="checkbox-label">
+                    <input type="checkbox" name="buyAirplaneTicketself" id="iBuyAirplaneTicketself" > 
                     Buy Airplane Ticket by yourself
                 </label>
                 <br>
 
-                <label for="number-of-passenger">Number of Passenger </label>
-                <input type="number" id="number-of-passenger">
+                <!-- <label for="number-of-passenger">Number of Passenger </label>
+                <input type="number" id="number-of-passenger"> -->
             </form>
         </div>
 
-        <a href="index.html"  >
-            <button type="button" class="button1">Submit</button>
+        <a>
+            <button type="button" class="button1" onclick="Check()">Submit</button>
         </a>
 
         <h3 class="name02">Pasit Bunsophon / 6733167521</h3>
